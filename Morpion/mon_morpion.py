@@ -5,13 +5,15 @@ Created on Tue Dec 28 17:35:09 2021
 
 @author: alicepeyrol
 """
-
+#Ce module implémente des générateurs de nombres pseudo-aléatoires pour différentes distributions.
 import random
 
+#Création de deux classes pour créer le morpion:Grille avec le board puis le jeu avec les joueurs
 
 class Grille:
 
     def __init__(self):
+        #Liste board vide
         self.board = []
 
     def create_board(self):
@@ -22,6 +24,9 @@ class Grille:
             self.board.append(row)
             
 class Jeu:
+    
+    def __init__(self,Grille):
+        self.Grille=Grille
 
     def get_random_first_player(self):
         return random.randint(0, 1)
@@ -94,7 +99,7 @@ class Jeu:
                 print(item, end=" ")
             print()
 
-    def start(self,Grille,Jeu):
+    def start(self):
         self.create_board()
 
         player = 'X' if self.get_random_first_player() == 1 else 'O'
@@ -127,11 +132,17 @@ class Jeu:
         # showing the final view of board
         print()
         self.show_board()
+        
+def main():
+    grille=Grille()
+    jeu=Jeu()
 
-
-    
-    
+main()
+        
 # starting the game
-morpion = Grille
-morpion.start()    
+#morpion = Jeu
+#morpion.start()      
+
+
+
         
